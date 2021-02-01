@@ -1,18 +1,24 @@
-const persimon = require('../../utils/persimon');
-const db = persimon('/assets/users.json'); // Relative to the project root
+const mongoose = require("mongoose");
 const jwt = require('jsonwebtoken');
+const { User } = require('../users/users.model')
 
-const login = (req, res) => {
-    const { email, password } = req.body;
-    const user = db.all().find(u => { return u.email === email && u.password === password} )
-    if (user)
-    {
-      const token = jwt.sign({email: email, role: 'admin'}, process.env.TOKEN_SECRET);
-      res.json(token);
-    } 
-    else {
-      res.status(401).send("Username or password incorrect");
-    }
+const login = async (req, res) => {
+  const { email, password } = req.body;
+  let query = { 'email': email, 'password': password };
+  const user = await User.findOne(query)
+
+  if (user) {
+    const token = jwt.sign({ email: email, role: 'admin' }, process.env.TOKEN_SECRET);
+    res.json({
+
+      token: token,
+      user: user,
+
+    });
+  }
+  else {
+    res.status(401).send("Username or password incorrect");
+  }
 };
 
 module.exports = {

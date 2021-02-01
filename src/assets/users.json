@@ -115,10 +115,10 @@
     "id": 13,
     "firstName": "Harlin",
     "lastName": "Trahmel",
-    "email": "htrahmelc@vk.com",
+    "email": "raul@raul.com",
     "avatar": "https://robohash.org/hicsitet.bmp?size=50x50&set=set1",
     "password": "O3j0GpCT7",
-    "username": "johnDoe",
+    "username": "raulinho",
     "following": []
   },
   {
@@ -151,12 +151,12 @@
   },
   {
     "id": 17,
-    "firstName": "Emmery",
-    "lastName": "Chidlow",
+    "firstName": "Dennis",
+    "lastName": "Rodmann",
     "email": "echidlowg@noaa.gov",
-    "avatar": "https://robohash.org/eumevenietnobis.bmp?size=50x50&set=set1",
+    "avatar": "https://i.pinimg.com/originals/70/d6/55/70d655bfcc0d5cb96c2e7e63fa0ffcb5.jpg",
     "password": "6URz2mr",
-    "username": "johnDoe",
+    "username": "Dennis",
     "following": []
   },
   {

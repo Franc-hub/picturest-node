@@ -2,13 +2,14 @@ const mongoose = require('mongoose');
 
 // Define model schema
 const userModelSchema = mongoose.Schema({
-  id: Number,
+  
   firstName: String,
   lastName: String,
   email: String,
   avatar: String,
   password: String,
   username: String,
+  boards: [],
   following: []
 });
 
@@ -27,7 +28,7 @@ const create = (user) => {
 };
 
 const get = async(id) => {
-  let query = { 'id': id };
+  let query = { '_id': id };
   return await User.findOne(query);
 };
 
@@ -36,7 +37,7 @@ const all = async() => {
 }
 
 const remove = (id) => {
-  let query = { 'id': id };
+  let query = { '_id': id };
   User.deleteOne(
     query,
     function (err, docs) { 
@@ -50,7 +51,7 @@ const remove = (id) => {
 };
 
 const update = (id, updateduser) => {
-  let query = { 'id': id };
+  let query = { '_id': id };
   User.updateOne(
     query,
     updateduser, 
@@ -64,10 +65,17 @@ const update = (id, updateduser) => {
   }); 
 };
 
+const boardsOfUser = async (id) =>{
+  let query = {'board' : id}
+  return await User.find((query))
+}
+
 module.exports = {
     create,
     update,
     remove,
     get,
-    all
+    all,
+    boardsOfUser,
+    User
   };

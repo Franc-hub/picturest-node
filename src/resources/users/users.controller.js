@@ -1,7 +1,5 @@
-const persimon = require('../../utils/persimon');
-const db = persimon('/assets/users.json'); // Relative to the project root
-
 const userModel = require('./users.model');
+
 
 const getAll = async (req, res) => {
   const users = await userModel.all();
@@ -34,10 +32,16 @@ const remove = (req, res) => {
   return res.status(200).json(usersWithoutTheDeleted);
 };
 
+const userOfBoards = async (req, res) => {
+  const userBoards = await userModel.boardsOfUser(req.params.id);
+  return res.status(200).json(userBoards)
+};
+
 module.exports = {
   create,
   update,
   getAll,
   getOne,
   remove,
+  userOfBoards
 };

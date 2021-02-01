@@ -10,4 +10,9 @@ router
   .put(boardsController.update)
   .delete(boardsController.remove);
 
+
+  router
+  .route('pins/:id')
+  .get(boardsController.PinsOfBoards)
+
 module.exports = router;
